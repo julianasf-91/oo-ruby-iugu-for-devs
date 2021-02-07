@@ -1,5 +1,6 @@
 class Turma
-    attr_accessor :alunos, :nome
+    attr_reader :alunos 
+    attr_writer :nome
 
     def initialize(nome)
         @nome = nome
@@ -11,4 +12,7 @@ class Turma
     def total_alunos(turma)
         print("Essa turma possui #{alunos.length.to_s()} alunos")
     end
+
+    private
+    attr_writer :alunos
 end

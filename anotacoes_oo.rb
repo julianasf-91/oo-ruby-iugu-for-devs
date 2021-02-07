@@ -100,7 +100,8 @@ class Turma
 end
 
 class Turma
-    attr_accessor :alunos, :nome
+    attr_reader :alunos                                                 #dentro da class somente lê
+    attr_writer :nome
 
     def initialize(nome)
         @nome = nome
@@ -112,10 +113,25 @@ class Turma
     def total_alunos(turma)
         print("Essa turma possui #{alunos.length.to_s()} alunos")
     end
+
+    private                                                             #consegue trocar seu valor somente através
+    attr_writer :alunos                                                 #dos métodos declarados na class Turma
 end
 
 turma1 = Turma.new('Turma 101')                                         #cria um objeto dentro da class turma
 ana = Aluno.new('Ana', '99 9999 9999', 123)                             #cria um objeto dentro da class aluno      
 turma1.adiciona_aluno(ana)                                              #adiciona o aluno dentro do objeto ana
 
+
+class Professor < Funcionario                                           #professor herda de funcionários
+    attr_accessor :disciplina
+
+    def initialize(nome, codigo_funcionario, disciplina)
+        super(nome, codigo_funcionario)                                 #método supe, permite chmar o método com o mesmo nome na classe pai, ou, seja, o initialize da classe pai 
+        @disciplina = disciplina
+    end
+    def imprime()
+        puts "Funcionário: #{nome} - Código: #{codigo_funcionario.to_s()} - Férias: #{ferias} - Disciplina: #{disciplina}"
+    end
+end
 
